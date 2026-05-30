@@ -1,3 +1,3 @@
-var name = "Johnny"
+var name = "Johnny";
 
 print(name)
