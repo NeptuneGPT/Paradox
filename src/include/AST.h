@@ -8,7 +8,8 @@ typedef struct AST_STRUCT
         AST_FUNCTION_CALL,
         AST_VARIABLE,
         AST_STRING,
-        AST_COMPOUND
+        AST_COMPOUND,
+        AST_COMMENT
     } type;
 
     /* AST_VAR_DEF */
