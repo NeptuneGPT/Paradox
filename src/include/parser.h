@@ -28,6 +28,6 @@ AST_T* parser_parse_term(parser_T* parser);
 
 AST_T* parser_parse_variable(parser_T* parser);
 
-AST_T* parser_parse_string(parser_T parser);
+AST_T* parser_parse_string(parser_T* parser);
 
 #endif
