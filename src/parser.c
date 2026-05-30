@@ -1,7 +1,6 @@
 #include "include/parser.h"
 #include "include/AST.h"
-
-#include "AST.c"
+#include <stdio.h>
 
 parser_T* init_parser(lexer_T* lexer){
     parser_T* parser = calloc(1,sizeof(struct PARSER_STRUCT));
@@ -16,7 +15,9 @@ void parser_eat(parser_T* parser, token_type_T token_type){
         parser->current_token = lexer_get_next_token(parser->lexer);
     }
     else{
-        printf('Unexpected token "%s", with type "%d"',parser->current_token->value,parser->current_token->type);
+        printf("Unexpected token %s, with type %d",
+                parser->current_token->value,
+                parser->current_token->type);
         exit(1);
     }
 
@@ -31,7 +32,7 @@ AST_T* parser_parse_statement(parser_T* parser){}
 AST_T* parser_parse_statements(parser_T* parser){
 
     AST_T* compound  = init_ast(AST_COMPOUND);
-    compound->compound_value = calloc(1, sizeof(AST_STRUCT*)); 
+    compound->compound_value = calloc(1, sizeof(struct AST_STRUCT*)); 
     AST_T* statement = parser_parse_statement(parser);
     compound->compound_value[0] = statement;
     compound->compound_size+=1;
@@ -39,7 +40,7 @@ AST_T* parser_parse_statements(parser_T* parser){
         parser_eat(parser,TOKEN_SEMI);  
         AST_T* statement = parser_parse_statement(parser);
         compound->compound_size+=1;
-        compound->compound_value = realloc(compound->compound_value,compound->compound_size * sizeof(AST_STRUCT*));
+        compound->compound_value = realloc(compound->compound_value,compound->compound_size * sizeof(struct AST_STRUCT*));
         compound->compound_value[compound->compound_size] = statement;
         
     }
