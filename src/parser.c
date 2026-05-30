@@ -29,12 +29,21 @@ AST_T* parser_parse(parser_T* parser){
 AST_T* parser_parse_statement(parser_T* parser){}
 
 AST_T* parser_parse_statements(parser_T* parser){
-    
-    AST_T** compound_value = calloc(1, sizeof(AST_STRUCT*)); 
-    AST_T* statement = parser_parse_statement(parser);
-    compound_value[0] = statement;
 
-    while
+    AST_T* compound  = init_ast(AST_COMPOUND);
+    compound->compound_value = calloc(1, sizeof(AST_STRUCT*)); 
+    AST_T* statement = parser_parse_statement(parser);
+    compound->compound_value[0] = statement;
+    compound->compound_size+=1;
+    while(parser->current_token->type == TOKEN_SEMI){
+        parser_eat(parser,TOKEN_SEMI);  
+        AST_T* statement = parser_parse_statement(parser);
+        compound->compound_size+=1;
+        compound->compound_value = realloc(compound->compound_value,compound->compound_size * sizeof(AST_STRUCT*));
+        compound->compound_value[compound->compound_size] = statement;
+        
+    }
+    return compound;
 }
 
 AST_T* parser_parse_expr(parser_T* parser){}
