@@ -10,6 +10,7 @@ typedef enum{
         TOKEN_SEMI,
         TOKEN_NUMBER,
         TOKEN_PLUS,
+        TOKEN_MINUS,
         TOKEN_MULT,
         TOKEN_COMMA,
         TOKEN_EOF
