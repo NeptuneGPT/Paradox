@@ -124,3 +124,7 @@ AST_T* visitor_visit_compound(visitor_T* visitor, AST_T* node){
     }
     return init_ast(AST_NOOP);
 }
+
+/*Visitor Math Functions, idk how to start these*/
+AST_T* visitor_visit_factor(visitor_T* visitor, AST_T* node){}
+AST_T* visitor_visit_term(visitor_T* visitor, AST_T* node){}

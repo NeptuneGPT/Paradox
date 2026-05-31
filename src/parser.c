@@ -107,6 +107,20 @@ AST_T* parser_parse_factor(parser_T* parser){
 }
 
 AST_T* parser_parse_term(parser_T* parser){
+    AST_T* term = init_ast(AST_TERM);
+    term->terms = calloc(1,sizeof(struct AST_STRUCT*));
+    term->terms[0] = parser->prev_token->value;
+    term->terms_size += 1;
+    parser_eat(parser,TOKEN_PLUS);
+    while (parser->current_token->type == TOKEN_PLUS){
+        parser_eat(parser, TOKEN_PLUS);
+        term->terms_size += 1;
+        term->terms = realloc(term->terms, term->terms_size * sizeof(struct AST_STRUCT*));
+        term->terms[term->terms_size-1] = parser->current_token->value;
+
+    }
+    return term; 
+
 
 }
 
