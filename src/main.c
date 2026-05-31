@@ -3,16 +3,18 @@
 #include "include/parser.h"
 #include "include/visitor.h"
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
     lexer_T* lexer = init_lexer(
-        "var name = \"Johnny\";\n print(name);\n"
+        "var x = \"Hello\";\n"
+        "var y = \"World\";\n"
+        "print(x, y);\n"
     );
 
     parser_T* parser = init_parser(lexer);
     AST_T* root = parser_parse(parser);
     visitor_T* visitor = init_visitor();
     visitor_visit(visitor, root);
-
 
     return 0;
 }
