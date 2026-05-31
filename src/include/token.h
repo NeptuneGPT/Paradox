@@ -13,9 +13,9 @@ typedef enum{
 }token_type_T;
 
 typedef struct TOKEN_STRUCT{
-    token_type_T* type;
+    token_type_T type;
     char* value;
 }token_T;
 
-token_T* init_token(token_type_T* type,char* value);
+token_T* init_token(token_type_T type,char* value);
 #endif
