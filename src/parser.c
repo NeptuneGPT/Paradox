@@ -102,4 +102,4 @@ AST_T* parser_parse_variable_definition(parser_T* parser){
     return variable_definition;
 }
 
-AST_T* parser_arse_fuction_call(parser_T* parser){}
+AST_T* parser_parse_fuction_call(parser_T* parser){}
