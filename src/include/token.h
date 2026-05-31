@@ -8,7 +8,9 @@ typedef enum{
         TOKEN_LPAREN,
         TOKEN_RPAREN,
         TOKEN_SEMI,
-        TOKEN_COMMENT
+        TOKEN_COMMENT,
+        TOKEN_COMMA,
+        TOKEN_EOF
 
 }token_type_T;
 
