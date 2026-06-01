@@ -7,7 +7,7 @@
 #include <ctype.h>
 
 
-int is_number(char str){
+int is_number(char str){/*
     char endptr;
     strtol(str, endptr,10);
     if (endptr == "\0"){
@@ -15,7 +15,7 @@ int is_number(char str){
     }
     else{
         return 0;
-    }
+    }*/
 }
 
 
