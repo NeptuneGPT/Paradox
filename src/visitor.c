@@ -37,6 +37,11 @@ AST_T* visitor_visit(visitor_T* visitor, AST_T* node){
             return visitor_visit_variable_definition(visitor, node);
             break;
         }
+        case AST_FUNCTION_DEFINITION:{
+            return visitor_visit_function_definition(visitor,node);
+            break;
+        }
+
         case AST_VARIABLE:{
             return visitor_visit_variable(visitor, node);
             break;
@@ -85,6 +90,11 @@ AST_T* visitor_visit_variable_definition(visitor_T* visitor,AST_T* node){
 
     }
 
+    return node;
+}
+
+AST_T* visitor_visit_function_definition(visitor_T* visitor, AST_T* node){
+    printf("we found func def");
     return node;
 }
 
