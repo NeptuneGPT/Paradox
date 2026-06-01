@@ -3,9 +3,11 @@
 #include <stdlib.h>
 
 AST_T* init_ast(int type){
+
     AST_T* ast = calloc(1, sizeof(struct AST_STRUCT));
     ast->type = type;
 
+    ast->scope = (void*) 0;
     
     //AST VAR DEF
     ast->variable_definition_variable_name = (void*) 0;
@@ -13,6 +15,7 @@ AST_T* init_ast(int type){
 
     //AST FUNC DEF
     ast->function_definition_body = (void*) 0;
+    ast->function_definition_name = (void*)0;
 
     //AST VAR
     ast->variable_name = (void*) 0;

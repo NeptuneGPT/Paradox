@@ -1,4 +1,5 @@
 #include "include/visitor.h"
+#include "include/scope.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -94,7 +95,12 @@ AST_T* visitor_visit_variable_definition(visitor_T* visitor,AST_T* node){
 }
 
 AST_T* visitor_visit_function_definition(visitor_T* visitor, AST_T* node){
-    printf("we found func def");
+    
+    scope_add_function_definition(
+        node->scope,
+        node
+    );
+    
     return node;
 }
 
