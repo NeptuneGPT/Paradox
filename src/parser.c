@@ -101,24 +101,36 @@ AST_T* parser_parse_statements(parser_T* parser, scope_T* scope){
 }
 
 AST_T* parser_parse_expr(parser_T* parser, scope_T* scope){
-/*
+
     switch (parser->current_token->type){
 
-        case TOKEN_STRING: return parser_parse_string(parser);
+        case TOKEN_STRING: return parser_parse_string(parser,scope);
         
-        case TOKEN_ID: return parser_parse_id(parser);
+        case TOKEN_ID: return parser_parse_id(parser,scope);
 
-        case TOKEN_MULT: return parser_parse_factor(parser);
+        case TOKEN_MULT: return parser_parse_factor(parser,scope);
 
-        
-    
-    }*/
+        case TOKEN_EQUALS:
+        case TOKEN_NEWLINE:
+        case TOKEN_LPAREN:
+        case TOKEN_RPAREN:
+        case TOKEN_SEMI:
+        case TOKEN_COMMENT:
+        case TOKEN_RBRACE:
+        case TOKEN_LBRACE:
+        case TOKEN_NUMBER:
+        case TOKEN_PLUS:
+        case TOKEN_MINUS:
+        case TOKEN_COMMA:
+        case TOKEN_EOF:
+          break;
+        }
 
     return init_ast(AST_NOOP);
 }
 
 AST_T* parser_parse_factor(parser_T* parser, scope_T* scope){
-/*
+
     AST_T* factor = init_ast(AST_FACTOR);
     
     factor->factors = calloc(1,sizeof(struct AST_STRUCT*));
@@ -136,7 +148,7 @@ AST_T* parser_parse_factor(parser_T* parser, scope_T* scope){
         factor->factors[factor->factors_size-1] = parser->current_token->value;
 
     }
-    */
+    
     return init_ast(AST_NOOP);
 }
 

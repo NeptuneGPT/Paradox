@@ -1,4 +1,5 @@
 #include "include/visitor.h"
+#include "include/AST.h"
 #include "include/scope.h"
 #include <stdio.h>
 #include <string.h>
@@ -63,7 +64,11 @@ AST_T* visitor_visit(visitor_T* visitor, AST_T* node){
             return node;
             break;
         }
-    }
+        case AST_FACTOR:
+        case AST_TERM:
+        case AST_NUMBER:
+          break;
+        }
     printf("Uncaught statement of type '%d'\n", node->type);
     exit(1);
 
@@ -142,5 +147,5 @@ AST_T* visitor_visit_compound(visitor_T* visitor, AST_T* node){
 }
 
 /*Visitor Math Functions, idk how to start these*/
-AST_T* visitor_visit_factor(visitor_T* visitor, AST_T* node){}
-AST_T* visitor_visit_term(visitor_T* visitor, AST_T* node){}
+AST_T* visitor_visit_factor(visitor_T* visitor, AST_T* node){return init_ast(AST_NOOP);}
+AST_T* visitor_visit_term(visitor_T* visitor, AST_T* node){return init_ast(AST_NOOP);}

@@ -6,17 +6,6 @@
 #include <ctype.h>
 
 
-int is_number(char str){/*
-    char endptr;
-    strtol(str, endptr,10);
-    if (endptr == "\0"){
-        return 1;
-    }
-    else{
-        return 0;
-    }*/
-return 0;}
-
 
 
 lexer_T* init_lexer(char* contents){
@@ -51,7 +40,7 @@ token_T* lexer_get_next_token(lexer_T* lexer){
         if (lexer->c == '"'){
             return lexer_collect_string(lexer);
         }
-        if (is_number(lexer->c) == 1){
+        if (isdigit(lexer->c) == 1){
             return lexer_collect_number(lexer);
         }
         switch (lexer->c){
@@ -116,7 +105,7 @@ char* lexer_get_current_char_as_string(lexer_T* lexer){
 token_T* lexer_collect_number(lexer_T* lexer){
     char* value = calloc(1,sizeof(char));
     value[0] = '\0';
-    while (is_number(lexer->c)){
+    while (isdigit(lexer->c)){
         char* s = lexer_get_current_char_as_string(lexer);
         value = realloc(value, (strlen(value) + strlen(s) + 1) *sizeof(char));
         strcat(value,s);
