@@ -1,5 +1,4 @@
 #include "include/AST.h"
-#include <ctype.h>
 #include <stdlib.h>
 
 AST_T* init_ast(int type){
