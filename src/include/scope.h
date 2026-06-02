@@ -1,12 +1,20 @@
 #ifndef SCOPE_H
 #define SCOPE_H
 #include "AST.h"
+
+
 typedef struct SCOPE_STRUCT{
     struct SCOPE_STRUCT* parent;
     AST_T** variables;
     int variable_count;
+    AST_T** function_definitions;
+    size_t function_definitions_size;
+
 } scope_T;
 
 scope_T* init_scope();
-scope_T* scope_add_function_definition(scope_T* scope, AST_T* node);
+
+AST_T* scope_add_function_definition(scope_T* scope, AST_T* fdef);
+
+AST_T* scope_get_function_definition(scope_T* scope, const char* fname);
 #endif
