@@ -264,7 +264,7 @@ AST_T* parser_parse_function_definition(parser_T* parser, scope_T* scope){
 
     AST_T* arg = parser_parse_variable(parser,scope);
     ast->function_definition_args_size += 1;
-    ast->function_definition_args[ast->function_definition_args_size - 1] = arg;
+    ast->function_definition_args[0] = arg;
     
 
     while (parser->current_token->type == TOKEN_COMMA){

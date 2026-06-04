@@ -103,7 +103,7 @@ AST_T* visitor_visit_variable(visitor_T* visitor, AST_T* node){
         return visitor_visit(visitor, vdef->variable_definition_value);
     } 
 
-    printf("Undefined variable '%s'\n",node->variable_name,'\n');
+    printf("Undefined variable '%s'\n",node->variable_name);
     exit(1);
 }
 
@@ -124,7 +124,7 @@ AST_T* visitor_visit_function_call(visitor_T* visitor, AST_T* node){
             node->function_call_name
     );
     if (fdef == (void*)0){
-        printf("Undefined method '%s'\n",node->function_call_name,"\n");
+        printf("Undefined method '%s'\n",node->function_call_name);
         exit(1);
 
         
@@ -138,7 +138,7 @@ AST_T* visitor_visit_function_call(visitor_T* visitor, AST_T* node){
         
         AST_T* ast_vardef = init_ast(AST_VARIABLE_DEFINITION);
  
-        AST_T* ast_vardef->variable_definition_variable_name = init_ast(AST_VARIABLE_DEFINITION_VARIABLE_NAME);
+        ast_vardef->variable_definition_variable_name =  fdef->variable_definition_variable_name;
 
         printf("ast_var = %p\n", ast_var);
         printf("name ptr = %p\n", ast_var->variable_definition_variable_name);
