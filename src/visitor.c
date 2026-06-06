@@ -12,8 +12,10 @@ static AST_T* builtin_function_print(visitor_T* visitor, AST_T** args, int args_
 
         switch (visited_ast->type)
         {
+            case AST_NUMBER: printf("%ld\n", visited_ast->number_value);break;
             case AST_STRING: printf("%s\n", visited_ast->string_value); break;
             default: printf("%p\n", visited_ast); break;
+            
         }
     }
 
@@ -22,13 +24,13 @@ static AST_T* builtin_function_print(visitor_T* visitor, AST_T** args, int args_
 
 static AST_T* builtin_function_sum(visitor_T* visitor, AST_T** args, int args_size)
 {
-    int value = 0; 
+    int value = 0;
     for (int i = 0; i < args_size; i++)
     {
         AST_T* visited_ast = visitor_visit_number(visitor, args[i]);
         value = value + visited_ast->number_value;    
     }  
-    printf("The Result of the operation is: %ld",value)
+    printf("The Result of the operation is: %ld \n",value);
     return init_ast(AST_NOOP);
 }
 /*static AST_T* builtin_function_sub(visitor_T* visitor, AST_T** args, int args_size)

@@ -253,6 +253,25 @@ AST_T* parser_parse_number(parser_T* parser, scope_T* scope){
     AST_T* ast_number = init_ast(AST_NUMBER);
     ast_number->number_value = strtol(parser->current_token->value,NULL, 10);
     parser_eat(parser, TOKEN_NUMBER);
+    if (parser->current_token->type == TOKEN_PLUS){
+        return parser_parse_sum(parser, scope);
+    }
     return ast_number;
+
+}
+AST_T* parser_parse_sum(parser_T* parser, scope_T* scope){
+    AST_T* ast_number = init_ast(AST_NUMBER);
+    ast_number->number_value = strtol(parser->prev_token->value,NULL, 10);
+    long value = ast_number->number_value;
+    while (1){
+    parser_eat(parser, TOKEN_PLUS);
+    ast_number->number_value = strtol(parser->current_token->value,NULL, 10);
+    value = value + ast_number->number_value;
+    parser_eat(parser, TOKEN_NUMBER);
+    if (parser->current_token->type == TOKEN_SEMI || parser->current_token->type == TOKEN_RPAREN){
+        ast_number->number_value = value;
+        return ast_number;
+    }
+    }
 
 }
