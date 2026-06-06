@@ -1,10 +1,10 @@
 Paradox
 =======
-Paradox is a Programming language programmed in C, intended to be compiled.
+Paradox is a Programming language programmed in C, NOT COMPILED
 
 Goals For Paradox:
 =
-We have many goals for paradox, but currently our goal is to get it into a state in which variables work, theres a print fucntion and compiling works.
+We have many goals for paradox, but currently our goal is to get it into a state in which variables work, theres a print fucntion and running our own files work.
 
 What sort of syntax do we even want?
 =
