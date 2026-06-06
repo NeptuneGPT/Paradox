@@ -28,7 +28,7 @@ static AST_T* builtin_function_sum(visitor_T* visitor, AST_T** args, int args_si
         AST_T* visited_ast = visitor_visit_number(visitor, args[i]);
         value = value + visited_ast->number_value;    
     }  
-    printf("The Result of the operation is: %ld",value)
+    printf("The Result of the operation is: %ld",value);
     return init_ast(AST_NOOP);
 }
 /*static AST_T* builtin_function_sub(visitor_T* visitor, AST_T** args, int args_size)
