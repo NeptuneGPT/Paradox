@@ -1,7 +1,7 @@
 #ifndef SCOPE_H
 #define SCOPE_H
 #include "AST.h"
-
+#include <string.h>
 
 typedef struct SCOPE_STRUCT{
     struct SCOPE_STRUCT* parent;

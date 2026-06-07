@@ -1,4 +1,6 @@
-var x = 1+2+8+49;
+func do_smth(x,y){
+    print(x);
+    print(y);
+    };
 
-print(x);
-print(7+83);
+do_smth("Hello There Kind Human", "ParadoxicXenos Wrote this basic script");

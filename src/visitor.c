@@ -22,43 +22,6 @@ static AST_T* builtin_function_print(visitor_T* visitor, AST_T** args, int args_
     return init_ast(AST_NOOP);
 }
 
-static AST_T* builtin_function_sum(visitor_T* visitor, AST_T** args, int args_size)
-{
-    int value = 0;
-    for (int i = 0; i < args_size; i++)
-    {
-        AST_T* visited_ast = visitor_visit_number(visitor, args[i]);
-        value = value + visited_ast->number_value;    
-    }  
-    printf("The Result of the operation is: %ld \n",value);
-    return init_ast(AST_NOOP);
-}
-/*static AST_T* builtin_function_sub(visitor_T* visitor, AST_T** args, int args_size)
-{
-        num1 = num1-num2; 
-
-        printf("%d",num1);
-    
-        return init_ast(AST_NOOP);
-}
-static AST_T* builtin_function_mult(visitor_T* visitor, AST_T** args, int args_size)
-{
-        num1 = num1*num2; 
-
-        printf("%d",num1);
-    
-        return init_ast(AST_NOOP);
-}
-static AST_T* builtin_function_div(visitor_T* visitor, AST_T** args, int args_size)
-{
-        num1 = num1/num2; 
-
-        printf("%d",num1);
-    
-        return init_ast(AST_NOOP);
-}*/
-
-
 static AST_T* builtin_function_exit(visitor_T* visitor, AST_T** args, int args_size)
 {
     for (int i = 0; i < args_size; i++)
@@ -167,10 +130,6 @@ AST_T* visitor_visit_function_call(visitor_T* visitor, AST_T* node)
     if (strcmp(node->function_call_name, "clear") == 0)
     {
         return builtin_function_clear(visitor, node->function_call_arguments, node->function_call_arguments_size);
-    }
-    if (strcmp(node->function_call_name, "sum") == 0)
-    {
-        return builtin_function_sum(visitor, node->function_call_arguments, node->function_call_arguments_size);
     }
 
     AST_T* fdef = scope_get_function_definition(

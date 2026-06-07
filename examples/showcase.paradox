@@ -1,0 +1,10 @@
+func showcase_code (x,y,z){
+    var greeting = "Hello human";
+    print(x);
+    print(y);
+    print(z);
+    print(b);
+
+};
+
+showcase_code(100,23,24);

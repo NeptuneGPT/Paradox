@@ -1,14 +1,4 @@
 #include "include/lexer.h"
-#include "include/token.h"
-#include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdio.h>
-
-
-
-
 
 lexer_T* init_lexer(char* contents){
     lexer_T* lexer = calloc(1, sizeof(struct LEXER_STRUCT));
@@ -40,7 +30,7 @@ token_T* lexer_get_next_token(lexer_T* lexer){
             return lexer_collect_number(lexer);
             
         }
-        if (isalnum(lexer->c)){
+        if (isalnum(lexer->c)|| lexer->c == TOKEN_UNDER){
             return lexer_collect_id(lexer);
             
         }
@@ -58,7 +48,8 @@ token_T* lexer_get_next_token(lexer_T* lexer){
             case '+': return lexer_advance_with_token(lexer,init_token(TOKEN_PLUS,lexer_get_current_char_as_string(lexer))); break;
             case '-': return lexer_advance_with_token(lexer,init_token(TOKEN_MINUS,lexer_get_current_char_as_string(lexer))); break;
             case '*': return lexer_advance_with_token(lexer, init_token(TOKEN_MULT, lexer_get_current_char_as_string(lexer))); break;
-            case '/':{} // IDK how to modify divide and minus (ideally should turn minus into adding a negtive number and divide as multiplying 1/number)
+            case '_': return lexer_advance_with_token(lexer, init_token(TOKEN_UNDER, lexer_get_current_char_as_string(lexer))); break;
+            case '/': return lexer_advance_with_token(lexer, init_token(TOKEN_DIV, lexer_get_current_char_as_string(lexer))); break;
         }
     }
     return init_token(TOKEN_EOF,"\0");
@@ -83,7 +74,7 @@ token_T* lexer_collect_string(lexer_T* lexer){
 token_T* lexer_collect_id(lexer_T* lexer){
     char* value = calloc(1,sizeof(char));
     value[0] = '\0';
-    while (isalnum(lexer->c)) {
+    while (isalnum(lexer->c)|| lexer->c == TOKEN_UNDER) {
         char* s = lexer_get_current_char_as_string(lexer);
         value = realloc(value, (strlen(value) + strlen(s) + 1) *sizeof(char));
         strcat(value,s);

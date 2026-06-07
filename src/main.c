@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include "include/lexer.h"
-#include "include/parser.h"
-#include "include/visitor.h"
-#include "include/io.h"
+#include "include/main.h"
 
 #define MAX_LIMIT 20
 void print_help(){

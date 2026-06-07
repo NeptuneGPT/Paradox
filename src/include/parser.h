@@ -3,6 +3,8 @@
 #include "AST.h"
 #include "lexer.h"
 #include "scope.h"
+#include <stdio.h>
+#include <string.h>
 
 typedef struct PARSER_STRUCT{
 

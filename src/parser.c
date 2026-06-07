@@ -1,7 +1,5 @@
 #include "include/parser.h"
-#include "include/scope.h"
-#include <stdio.h>
-#include <string.h>
+
 
 
 parser_T* init_parser(lexer_T* lexer)
@@ -26,7 +24,7 @@ void parser_eat(parser_T* parser, int token_type)
     else
     {
         printf(
-            "Unexpected token `%s`, with type %d",
+            "Unexpected token `%s`, with type %d \n",
             parser->current_token->value,
             parser->current_token->type
         );
@@ -239,7 +237,7 @@ AST_T* parser_parse_id(parser_T* parser, scope_T* scope)
         return parser_parse_variable_definition(parser, scope);
     }
     else
-    if (strcmp(parser->current_token->value, "function") == 0)
+    if (strcmp(parser->current_token->value, "func") == 0)
     {
         return parser_parse_function_definition(parser, scope);
     }

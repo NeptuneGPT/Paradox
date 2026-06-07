@@ -1,5 +1,7 @@
 #ifndef TOKEN_H
 #define TOKEN_H
+#include <stdlib.h>
+#include <stdio.h>
 typedef enum{
         TOKEN_ID,
         TOKEN_EQUALS,
@@ -16,7 +18,9 @@ typedef enum{
         TOKEN_MINUS,
         TOKEN_MULT,
         TOKEN_COMMA,
-        TOKEN_EOF
+        TOKEN_EOF,
+        TOKEN_UNDER,
+        TOKEN_DIV
 
 }token_type_T;
 
